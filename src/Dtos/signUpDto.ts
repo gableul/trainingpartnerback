@@ -16,13 +16,8 @@ export class SignUpDto{
     @Length(3,15)
     readonly prenom : string
     
-    @IsString()
-    readonly datedenaissance : string
-
-    @IsString()
-    @IsNotEmpty()
-    @Length(3,30)
-    readonly motdepasse : string
+    @IsDate()
+    readonly datedenaissance : Date
 
     @IsEmail()
     readonly email : string
@@ -36,4 +31,9 @@ export class SignUpDto{
     @IsNotEmpty()
     @Length(3,220)
     readonly reponse_message : string
+
+    @IsString()
+    @IsNotEmpty()
+    @Length(3,30)
+    readonly motdepasse : string
 }

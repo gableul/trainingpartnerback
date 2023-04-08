@@ -1,10 +1,10 @@
 import { ConflictException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
-import { SignUpDto } from 'src/Dtos/signUpDto';
+import { SignUpDto } from './Dtos/signUpDto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { LoginDto } from 'src/Dtos/loginDto';
+import { LoginDto } from './Dtos/loginDto';
 
 @Injectable()
 export class AppService {
@@ -18,10 +18,11 @@ export class AppService {
     }
 
     async postSignUp(body : SignUpDto) : Promise<string> {
+        console.log('Received request body',body)
         try{
             const {motdepasse} = body;
             const hash = await bcrypt.hash(motdepasse,10)
-            const user = this.usersRepository.create({...body, motdepasse : hash, ...body})
+            const user = this.usersRepository.create({...body, motdepasse : hash})
             await this.usersRepository.save(user)
             return "User Created !"
         }
