@@ -19,9 +19,9 @@ export class AppService {
 
     async postSignUp(body : SignUpDto) : Promise<string> {
         try{
-            const {password} = body;
-            const hash = await bcrypt.hash(password,10)
-            const user = this.usersRepository.create({...body, password : hash, ...body})
+            const {motdepasse} = body;
+            const hash = await bcrypt.hash(motdepasse,10)
+            const user = this.usersRepository.create({...body, motdepasse : hash, ...body})
             await this.usersRepository.save(user)
             return "User Created !"
         }
@@ -30,10 +30,10 @@ export class AppService {
         }
     }
     async postLogin(body: LoginDto) {
-        const {password,username} = body;
-        const user = await this.usersRepository.findOne({where : {username : username }});
+        const {motdepasse,pseudo} = body;
+        const user = await this.usersRepository.findOne({where : {pseudo : pseudo }});
         if (!user) throw new NotFoundException("User not found");
-        const match = await bcrypt.compare(password,user.password);
+        const match = await bcrypt.compare(motdepasse,user.motdepasse);
         if(!match) throw new UnauthorizedException("Invalid password");
         return user;
         }

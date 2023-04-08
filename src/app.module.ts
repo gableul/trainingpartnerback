@@ -12,7 +12,7 @@ import { User } from './user.entity';
     port : 3306,
     username : 'root',
     password : 'root',
-    database : 'trainingpartner',
+    database : 'training_partner',
     entities : [User],
     synchronize : true,
   }),AppModule],

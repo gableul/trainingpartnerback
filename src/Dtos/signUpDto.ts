@@ -4,36 +4,36 @@ export class SignUpDto{
     @IsString()
     @IsNotEmpty()
     @Length(3,15)
-    readonly username : string
+    readonly pseudo : string
 
     @IsString()
     @IsNotEmpty()
     @Length(3,15)
-    readonly lastname : string
+    readonly nom : string
 
     @IsString()
     @IsNotEmpty()
     @Length(3,15)
-    readonly firstname : string
+    readonly prenom : string
     
     @IsString()
-    readonly birthdate: string
+    readonly datedenaissance : string
+
+    @IsString()
+    @IsNotEmpty()
+    @Length(3,30)
+    readonly motdepasse : string
 
     @IsEmail()
     readonly email : string
 
     @IsString()
     @IsNotEmpty()
-    @Length(3,30)
-    readonly password : string
+    @Length(3,220)
+    readonly message_mdp : string
 
     @IsString()
     @IsNotEmpty()
     @Length(3,220)
-    readonly question : string
-
-    @IsString()
-    @IsNotEmpty()
-    @Length(3,220)
-    readonly answer : string
+    readonly reponse_message : string
 }

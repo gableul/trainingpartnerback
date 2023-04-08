@@ -17,7 +17,7 @@ async function bootstrap() {
     port : 3306,
     user : "root",
     password : "root",
-    database : "trainingpartner",
+    database : "training_partner",
   }
   const mySqlStore = mySqlSession(session)
   const store =new mySqlStore(options)

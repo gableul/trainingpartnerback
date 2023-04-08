@@ -3,23 +3,30 @@ import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class User{
-    @Column()
-    readonly username : string;
+    @PrimaryColumn({unique : true})
+    readonly pseudo : string;
     
     @Column()
-    readonly lastname : string;
+    readonly nom : string;
 
     @Column()
-    readonly firsname : string;
-
-    @PrimaryColumn({unique : true})
-    readonly email : string;
+    readonly prenom : string;
 
     @Column()
     readonly birthdate : string;
 
     @Column()
     @Exclude()
-    readonly password : string;
+    readonly motdepasse : string;
+
+    @Column()
+    readonly email : string;
+
+    @Column()
+    readonly message_mdp : string;
+
+    @Column()
+    readonly reponse_message : string;
+
 
 }

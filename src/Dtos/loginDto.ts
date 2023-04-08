@@ -4,10 +4,10 @@ export class LoginDto{
     @IsString()
     @IsNotEmpty()
     @Length(3,15)
-    readonly username : string
+    readonly pseudo : string
 
     @IsString()
     @IsNotEmpty()
     @Length(3,30)
-    readonly password : string
+    readonly motdepasse : string
 }
