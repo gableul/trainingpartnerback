@@ -12,8 +12,8 @@ export class User{
     @Column()
     readonly prenom : string;
 
-    @Column('date')
-    readonly datedenaissance : Date;
+    @Column()
+    readonly datedenaissance : string;
 
     @Column()
     readonly email : string;

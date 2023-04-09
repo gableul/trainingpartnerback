@@ -16,20 +16,22 @@ export class SignUpDto{
     @Length(3,15)
     readonly prenom : string
     
-    @IsDate()
-    readonly datedenaissance : Date
+    @IsString()
+    @IsNotEmpty()
+    @Length(6,15)
+    readonly datedenaissance : string
 
     @IsEmail()
     readonly email : string
 
     @IsString()
     @IsNotEmpty()
-    @Length(3,220)
+    @Length(3,100)
     readonly message_mdp : string
 
     @IsString()
     @IsNotEmpty()
-    @Length(3,220)
+    @Length(3,100)
     readonly reponse_message : string
 
     @IsString()

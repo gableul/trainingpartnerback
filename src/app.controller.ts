@@ -2,7 +2,6 @@ import { Controller, Get, Render, Post, Body, Redirect, UseInterceptors, ClassSe
 import session from 'express-session';
 import { LoginDto } from './Dtos/loginDto';
 import { SignUpDto } from './Dtos/signUpDto';
-
 import { AppService } from './app.service';
 import * as moment from 'moment';
 
@@ -60,8 +59,8 @@ export class AppController {
   }
 
   @Post('/logout')
-  PostLogout(@Session() session : Record<string,any>){
-      session.destroy((err => {}))
+  PostLogout(){
+      return "Déconnexion réussie"
   }
 
 }
