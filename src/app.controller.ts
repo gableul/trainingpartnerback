@@ -33,11 +33,9 @@ export class AppController {
   async postSignUp(@Body() body : SignUpDto){
     try {
       const user = await this.appService.postSignUp(body)
-      console.log("user Created",user)
       return user;
     }
     catch(error){
-      console.log("Failed to created user",error.message)
       throw new BadRequestException(`Failed to create user. Reason ${error.message}`)
     }  
   }
@@ -59,8 +57,8 @@ export class AppController {
   }
 
   @Post('/logout')
-  PostLogout(){
-      return "Déconnexion réussie"
+  postLogout(@Session() session : Record<string, any>){
+      this.appService.postLogout(session);
   }
 
 }

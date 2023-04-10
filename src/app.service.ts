@@ -38,5 +38,15 @@ export class AppService {
         if(!match) throw new UnauthorizedException("Invalid password");
         return user;
         }
+
+    postLogout(session : Record<string,any>){
+        if (session){
+            session.destros((err)=>{
+                if(err){
+                    console.log("Failed to disconnected session !",err);
+                }
+            })
+        }
+    }
     
 }
