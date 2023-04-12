@@ -44,5 +44,16 @@ export class UserService {
             })
         }
     }
+
+    async getUser(userPseudo : string): Promise<User>{
+        try{
+            const user = await this.usersRepository.findOneOrFail({ where : {pseudo : userPseudo}})
+            return user;
+        }
+        catch (error){
+            throw new NotFoundException(`User with pseudo ${userPseudo} not found`);
+        }
+
+    }
     
 }

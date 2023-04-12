@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseInterceptors, ClassSerializerInterceptor, Session, UnauthorizedException, BadRequestException } from '@nestjs/common';
+import { Controller, Post, Body, UseInterceptors, ClassSerializerInterceptor, Session, UnauthorizedException, BadRequestException, Get } from '@nestjs/common';
 import session from 'express-session';
 import { LoginDto } from './Dtos/loginDto';
 import { SignUpDto } from './Dtos/signUpDto';
@@ -41,4 +41,17 @@ export class UserController {
       this.appService.postLogout(session);
   }
 
+  @Get('/profil')
+  async getProfil(@Session() session : Record<string,any>){
+    try {
+      if(!session || !session.connected){
+        throw new UnauthorizedException("User not connected !");
+      }
+      const user = await this.appService.getUser(session.user.pseudo);
+      return user;
+    }
+    catch(error){
+      throw new BadRequestException(`Failed to get user profile. Reason ${error.message}`)
+    }
+  }
 }
