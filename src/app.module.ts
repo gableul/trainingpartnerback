@@ -3,10 +3,12 @@ import { AppService } from './app.service';
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { CorsMiddleware } from '@nest-middlewares/cors';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './user.entity';
+import { User } from './user/user.entity';
+import { UserModule } from './user/user.module';
+
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]),TypeOrmModule.forRoot({
+  imports: [TypeOrmModule.forRoot({
     type : 'mysql',
     host : 'localhost',
     port : 3306,
@@ -15,7 +17,7 @@ import { User } from './user.entity';
     database : 'training_partner',
     entities : [User],
     synchronize : true,
-  }),AppModule],
+  }),AppModule,UserModule],
   controllers: [AppController],
   providers: [AppService],
 })

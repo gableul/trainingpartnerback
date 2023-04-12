@@ -3,17 +3,17 @@ import { IsString, IsEmail, IsNotEmpty, Length, IsDate } from  "class-validator"
 export class SignUpDto{
     @IsString()
     @IsNotEmpty()
-    @Length(3,15)
+    @Length(1,20)
     readonly pseudo : string
 
     @IsString()
     @IsNotEmpty()
-    @Length(3,15)
+    @Length(1,25)
     readonly nom : string
 
     @IsString()
     @IsNotEmpty()
-    @Length(3,15)
+    @Length(1,25)
     readonly prenom : string
     
     @IsString()
@@ -26,16 +26,16 @@ export class SignUpDto{
 
     @IsString()
     @IsNotEmpty()
-    @Length(3,100)
+    @Length(10,100)
     readonly message_mdp : string
 
     @IsString()
     @IsNotEmpty()
-    @Length(3,100)
+    @Length(1,100)
     readonly reponse_message : string
 
     @IsString()
     @IsNotEmpty()
-    @Length(3,30)
+    @Length(3,15)
     readonly motdepasse : string
 }
