@@ -9,5 +9,5 @@ export class LoginDto{
     @IsString()
     @IsNotEmpty()
     @Length(3,15)
-    readonly motdepasse : string
+    readonly motDePasse : string
 }
