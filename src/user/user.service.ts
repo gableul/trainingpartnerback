@@ -16,9 +16,9 @@ export class UserService {
     async postSignUp(body : SignUpDto) : Promise<string> {
         console.log('Received request body',body)
         try{
-            const {motdepasse} = body;
-            const hash = await bcrypt.hash(motdepasse,10)
-            const user = this.usersRepository.create({...body, motdepasse : hash})
+            const {motDePasse} = body;
+            const hash = await bcrypt.hash(motDePasse,10)
+            const user = this.usersRepository.create({...body, motDePasse : hash})
             await this.usersRepository.save(user)
             return "User Created !"
         }
@@ -26,11 +26,12 @@ export class UserService {
             throw new ConflictException(error.message)
         }
     }
+
     async postLogin(body: LoginDto) {
-        const {motdepasse,pseudo} = body;
+        const {motDePasse,pseudo} = body;
         const user = await this.usersRepository.findOne({where : {pseudo : pseudo }});
         if (!user) throw new NotFoundException("User not found");
-        const match = await bcrypt.compare(motdepasse,user.motdepasse);
+        const match = await bcrypt.compare(motDePasse,user.motDePasse);
         if(!match) throw new UnauthorizedException("Invalid password");
         return user;
         }

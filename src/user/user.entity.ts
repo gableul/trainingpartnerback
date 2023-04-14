@@ -13,18 +13,18 @@ export class User{
     readonly prenom : string;
 
     @Column()
-    readonly datedenaissance : string;
+    readonly dateDeNaissance : string;
 
     @Column()
     readonly email : string;
 
     @Column()
-    readonly message_mdp : string;
+    readonly messageMdp : string;
 
     @Column()
-    readonly reponse_message : string;
+    readonly reponseMessage : string;
 
     @Column()
     @Exclude()
-    readonly motdepasse : string;
+    readonly motDePasse : string;
 }

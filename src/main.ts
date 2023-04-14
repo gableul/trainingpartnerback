@@ -4,8 +4,6 @@ import { NestFactory } from '@nestjs/core';
 import * as cors from 'cors';
 import * as session from 'express-session';
 import * as mySqlSession from 'express-mysql-session';
-import { localData } from "./user/middlewares/localsData";
-
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

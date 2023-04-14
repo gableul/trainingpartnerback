@@ -7,12 +7,12 @@ import { UserService } from './user.service';
 @Controller('user')
 export class UserController {
 
-  constructor(private readonly appService: UserService) {}
+  constructor(private readonly userService : UserService) {}
 
   @Post("/signUp")
   async postSignUp(@Body() body : SignUpDto){
     try {
-      const user = await this.appService.postSignUp(body)
+      const user = await this.userService.postSignUp(body)
       return user;
     }
     catch(error){
@@ -24,7 +24,7 @@ export class UserController {
   @Post("/login")
   async postLogin(@Body() body : LoginDto, @Session() session : Record<string,any>){
       try {
-        const user = await this.appService.postLogin(body)
+        const user = await this.userService.postLogin(body)
         if (session){
           session.user = user
           session.connected = true
@@ -38,7 +38,7 @@ export class UserController {
 
   @Post('/logout')
   postLogout(@Session() session : Record<string, any>){
-      this.appService.postLogout(session);
+      this.userService.postLogout(session);
   }
 
   @Get('/profil')
@@ -47,7 +47,7 @@ export class UserController {
       if(!session || !session.connected){
         throw new UnauthorizedException("User not connected !");
       }
-      const user = await this.appService.getUser(session.user.pseudo);
+      const user = await this.userService.getUser(session.user.pseudo);
       return user;
     }
     catch(error){
