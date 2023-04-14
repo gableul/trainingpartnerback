@@ -1,9 +1,10 @@
-import { Controller, Get, Post,Body, Render } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import * as moment from 'moment';
 
 @Controller()
 export class AppController {
+
   constructor(private readonly appService: AppService) {}
   private savedMessage = "";
   private graph1 = {
@@ -74,13 +75,13 @@ export class AppController {
     console.log(message);
     console.log('ca passe')
     this.savedMessage = message;
-    
-
   }
+
   @Get('/chartCreate/getMessage')
     getMessage() : string{
     return this.savedMessage;
     }
+<<<<<<< HEAD
 
   @Post('chartVisu/getlstGraph')
   sendGraphlist( @Body('sport') sport : any){
@@ -114,3 +115,6 @@ export class AppController {
   }
 }
 
+=======
+}
+>>>>>>> db1d4c7aa23a7a145f014c4902bbd0eaaf7b968d
