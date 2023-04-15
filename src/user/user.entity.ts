@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Graphique } from 'src/graphique/graphique.entity';
+import { Entity, Column, PrimaryColumn, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class User{
@@ -27,4 +28,7 @@ export class User{
     @Column()
     @Exclude()
     readonly motDePasse : string;
+    
+    @OneToMany(()=>Graphique, (Graphique) =>Graphique.userPseudo)
+    graphique : Graphique[]
 }

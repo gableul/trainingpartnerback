@@ -5,6 +5,10 @@ import { CorsMiddleware } from '@nest-middlewares/cors';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
 import { UserModule } from './user/user.module';
+import { GraphiqueModule } from './graphique/graphique.module';
+import { Graphique } from './graphique/graphique.entity';
+import { DonneeGraphModule } from './donneeGraph/donneeGraph.module';
+import { DonneeGraph } from './donneeGraph/donneeGraph.entity';
 
 
 @Module({
@@ -15,9 +19,9 @@ import { UserModule } from './user/user.module';
     username : 'root',
     password : 'root',
     database : 'training_partner',
-    entities : [User],
-    synchronize : true,
-  }),AppModule,UserModule],
+    entities : [User,Graphique,DonneeGraph],
+    synchronize : false,
+  }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule],
   controllers: [AppController],
   providers: [AppService],
 })

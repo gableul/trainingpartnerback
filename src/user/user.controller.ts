@@ -6,7 +6,6 @@ import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
-
   constructor(private readonly userService : UserService) {}
 
   @Post("/signUp")
@@ -28,6 +27,7 @@ export class UserController {
         if (session){
           session.user = user
           session.connected = true
+          console.log(session,session.user,session.connected);
         }
         return session
       }
@@ -42,13 +42,17 @@ export class UserController {
   }
 
   @Get('/profil')
-  async getProfil(@Session() session : Record<string,any>){
+  async getUser(@Session() session : Record<string,any>){
     try {
-      if(!session || !session.connected){
+      console.log(session);
+      if(session || session.connected){
+        const user = await this.userService.getUser(session.user.pseudo);
+        console.log(user)
+        return user;
+      }
+      else {
         throw new UnauthorizedException("User not connected !");
       }
-      const user = await this.userService.getUser(session.user.pseudo);
-      return user;
     }
     catch(error){
       throw new BadRequestException(`Failed to get user profile. Reason ${error.message}`)

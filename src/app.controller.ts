@@ -60,9 +60,6 @@ export class AppController {
     date: ''
   }
 
-
-
-
   @Get('/date')
   getDate() : string {
     const now = moment();
@@ -70,7 +67,7 @@ export class AppController {
     return `${formatted}`;
   }
   
-  @Post('/chartCreate/saveGraph')
+  /*@Post('/chartCreate/saveGraph')
   create (@Body() message : any ){
     console.log(message);
     console.log('ca passe')
@@ -80,8 +77,7 @@ export class AppController {
   @Get('/chartCreate/getMessage')
     getMessage() : string{
     return this.savedMessage;
-    }
-<<<<<<< HEAD
+    }*/
 
   @Post('chartVisu/getlstGraph')
   sendGraphlist( @Body('sport') sport : any){
@@ -115,6 +111,3 @@ export class AppController {
   }
 }
 
-=======
-}
->>>>>>> db1d4c7aa23a7a145f014c4902bbd0eaaf7b968d

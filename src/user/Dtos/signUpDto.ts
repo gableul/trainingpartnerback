@@ -18,7 +18,7 @@ export class SignUpDto{
     
     @IsString()
     @IsNotEmpty()
-    @Length(6,15)
+    @Length(10,10)
     readonly dateDeNaissance : string
 
     @IsEmail()
