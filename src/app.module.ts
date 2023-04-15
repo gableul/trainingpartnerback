@@ -5,6 +5,10 @@ import { CorsMiddleware } from '@nest-middlewares/cors';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
 import { UserModule } from './user/user.module';
+import { AlgoModule } from './algo/algo.module';
+import { SeanceController } from './seance/seance.controller';
+import { SeanceService } from './seance/seance.service';
+import { SeanceModule } from './seance/seance.module';
 
 
 @Module({
@@ -17,9 +21,9 @@ import { UserModule } from './user/user.module';
     database : 'training_partner',
     entities : [User],
     synchronize : true,
-  }),AppModule,UserModule],
-  controllers: [AppController],
-  providers: [AppService],
+  }),AppModule,UserModule, AlgoModule, SeanceModule],
+  controllers: [AppController, SeanceController],
+  providers: [AppService, SeanceService],
 })
 export class AppModule implements NestModule {
   // Configuration du CORS
