@@ -37,36 +37,19 @@ export class SeanceService {
         const exercice=this.getExercice();
         exercice.forEach(ex =>{
         switch(ex.nom.toLowerCase()){
-            case 'dc':
-            case 'dvp':
-            case 'devellope couche':
-            case 'développé couché':
-                this.muscleTravailler["pec"]+=ex.nrbRep;
-            case 'sdt':
-            case 'souleve de terre':
-            case 'soulevé de terre':
-                this.muscleTravailler["dos"]+=ex.nrbRep;
-            case 'squat':
-            case 'presse':
-            case 'leg':
-            case 'squat machine':
-            case 'presses à cuisses':
-            case 'leg extension':
-            case 'leg curl':
-                this.muscleTravailler["jambe"]+=ex.nrbRep;
-            case 'curl':
-            case 'biceps':
-                this.muscleTravailler["biceps"]+=ex.nrbRep;
-            case 'triceps extension':
-            case 'barre au front':
-            case 'developpe militaire':
-                this.muscleTravailler["triceps"]+=ex.nrbRep;
+            case 'dc':case 'dvp':case 'devellope couche':case 'développ couché incliné':
+                this.muscleTravailler["pec"]+=(ex.nbrSerie*ex.nrbRep);
+            case 'sdt':case 'souleve de terre':case 'traction':
+                this.muscleTravailler["dos"]+=(ex.nbrSerie*ex.nrbRep);
+            case 'squat':case 'presse':case 'leg':case 'squat machine':case 'presses à cuisses':case 'leg extension':case 'leg curl':
+                this.muscleTravailler["jambe"]+=(ex.nbrSerie*ex.nrbRep);
+            case 'curl':case 'biceps':
+                this.muscleTravailler["biceps"]+=(ex.nbrSerie*ex.nrbRep);
+            case 'triceps extension':case 'barre au front':case 'developpe militaire':
+                this.muscleTravailler["triceps"]+=(ex.nbrSerie*ex.nrbRep);
             default:
                 return '';
-        }})
-      }
-      @Get()
-      getMuscleTravailler(){
+        }});
         return this.muscleTravailler;
       }
 
@@ -74,7 +57,7 @@ export class SeanceService {
       getLessWorkedMuscle(){
         let muscle:string ="pec";
         let min:number =this.getMuscle["pec"];
-        for(const part in this.getMuscleTravailler()){
+        for(const part in this.getMuscle()){
             if(this.getMuscle[part]<min){
                 min=this.getMuscle[part];
                 muscle=part;

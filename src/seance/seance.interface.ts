@@ -14,5 +14,5 @@ export interface Seance {
     nom:string,
     duree:string,
     nomSport:string,
-    date:string,
+    date:Date,
 }    

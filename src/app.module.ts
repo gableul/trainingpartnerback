@@ -9,6 +9,7 @@ import { AlgoModule } from './algo/algo.module';
 import { SeanceController } from './seance/seance.controller';
 import { SeanceService } from './seance/seance.service';
 import { SeanceModule } from './seance/seance.module';
+import { HebdomadaireModule } from './hebdomadaire/hebdomadaire.module';
 
 
 @Module({
@@ -21,7 +22,7 @@ import { SeanceModule } from './seance/seance.module';
     database : 'training_partner',
     entities : [User],
     synchronize : true,
-  }),AppModule,UserModule, AlgoModule, SeanceModule],
+  }),AppModule,UserModule, AlgoModule, SeanceModule, HebdomadaireModule],
   controllers: [AppController, SeanceController],
   providers: [AppService, SeanceService],
 })
