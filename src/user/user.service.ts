@@ -34,11 +34,11 @@ export class UserService {
         const match = await bcrypt.compare(motDePasse,user.motDePasse);
         if(!match) throw new UnauthorizedException("Invalid password");
         return user;
-        }
+    }
 
     postLogout(session : Record<string,any>){
         if (session){
-            session.destros((err)=>{
+            session.destroy((err)=>{
                 if(err){
                     console.log("Failed to disconnected session !",err);
                 }
@@ -48,7 +48,7 @@ export class UserService {
 
     async getUser(pseudo : string): Promise<User>{
         try{
-            const user = await this.usersRepository.findOneOrFail({ where : {pseudo : pseudo}})
+            const user = await this.usersRepository.findOneOrFail({ where : {pseudo}})
             return user;
         }
         catch (error){

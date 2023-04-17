@@ -1,5 +1,4 @@
 import { Controller, Post, Body, UseInterceptors, ClassSerializerInterceptor, Session, UnauthorizedException, BadRequestException, Get } from '@nestjs/common';
-import session from 'express-session';
 import { LoginDto } from './Dtos/loginDto';
 import { SignUpDto } from './Dtos/signUpDto';
 import { UserService } from './user.service';
@@ -27,7 +26,7 @@ export class UserController {
         if (session){
           session.user = user
           session.connected = true
-          console.log(session,session.user,session.connected);
+          //console.log(session,session.user,session.connected);
         }
         return session
       }
@@ -43,9 +42,12 @@ export class UserController {
 
   @Get('/profil')
   async getUser(@Session() session : Record<string,any>){
+    console.log("session : ",session)
+    console.log("session.user : ",session.user)
+    console.log("session.user.pseudo : ",session.user.pseudo)
     try {
       console.log(session);
-      if(session || session.connected){
+      if(session && session.connected && session.user && session.user.pseudo){
         const user = await this.userService.getUser(session.user.pseudo);
         console.log(user)
         return user;

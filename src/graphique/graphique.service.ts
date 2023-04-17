@@ -12,11 +12,10 @@ export class GraphiqueService {
         private readonly graphiqueRepository : Repository<Graphique>
     ) {}
 
-    async postChartCreate(body : GraphiqueDto, user : User) : Promise<Graphique> {
+    async postChartCreate(body : GraphiqueDto) : Promise<Graphique> {
         console.log('Received request body',body)
         try{
             const chart = this.graphiqueRepository.create(body)
-            chart.userPseudo = user;
             return  await this.graphiqueRepository.save(chart)
         }
         catch(error){

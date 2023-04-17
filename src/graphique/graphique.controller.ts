@@ -8,10 +8,9 @@ export class GraphiqueController {
     constructor(private readonly graphiqueService : GraphiqueService) {}
 
     @Post('/create')
-    async postChartCreate(@Body() body : GraphiqueDto, @Session() session : Record<string,any>){
-        const currentUser : User = session.user
+    async postChartCreate(@Body() body : GraphiqueDto){
         try{
-            return this.graphiqueService.postChartCreate(body, currentUser);
+            return this.graphiqueService.postChartCreate(body);
         }
         catch(error){
             console.log(error);

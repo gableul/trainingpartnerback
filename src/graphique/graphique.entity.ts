@@ -11,7 +11,7 @@ export class Graphique{
     readonly idGraph : number;
 
     @ManyToOne(()=> User, (user)=> user.graphique)
-    userPseudo : User
+    user : string;
     
     @Column()
     readonly nomSport : string;
