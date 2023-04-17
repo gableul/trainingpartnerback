@@ -29,6 +29,6 @@ export class User{
     @Exclude()
     readonly motDePasse : string;
     
-    @OneToMany(()=>Graphique, (Graphique) =>Graphique.user)
-    graphique : Graphique[]
+    /*@OneToMany(()=>Graphique, (Graphique) =>Graphique.user)
+    graphique : Graphique[]*/
 }

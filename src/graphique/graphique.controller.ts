@@ -1,7 +1,6 @@
-import { BadRequestException, Body, Controller, Post, Session } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
 import { GraphiqueService } from './graphique.service';
 import { GraphiqueDto } from './Dto/graphiqueDto';
-import { User } from 'src/user/user.entity';
 
 @Controller('graphique')
 export class GraphiqueController {

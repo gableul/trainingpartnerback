@@ -12,6 +12,6 @@ export class DonneeGraph{
     @Column()
     readonly valeur : number;
 
-    @ManyToOne(()=> Graphique, (graphique)=> graphique.donneeGraph)
-    graphique : Graphique
+    /*@ManyToOne(()=> Graphique, (graphique)=> graphique.donneeGraph)
+    graphique : Graphique*/
 }

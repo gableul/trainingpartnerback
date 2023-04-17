@@ -9,9 +9,6 @@ export class Graphique{
 
     @PrimaryGeneratedColumn()
     readonly idGraph : number;
-
-    @ManyToOne(()=> User, (user)=> user.graphique)
-    user : string;
     
     @Column()
     readonly nomSport : string;
@@ -19,6 +16,12 @@ export class Graphique{
     @Column()
     readonly titre : string;
 
+    @Column()
+    readonly userPseudo : string;
+
+    /*@ManyToOne(()=> User, (user)=> user.graphique)
+    user : string;
+
     @OneToMany(()=>DonneeGraph, (donneeGraph) => donneeGraph.graphique)
-    donneeGraph : DonneeGraph[]
+    donneeGraph : DonneeGraph[]*/
 }

@@ -5,6 +5,7 @@ import { User } from './user.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { LoginDto } from './Dtos/loginDto';
+import { ProfilDto } from './Dtos/profilDto';
 
 @Injectable()
 export class UserService {
@@ -46,9 +47,10 @@ export class UserService {
         }
     }
 
-    async getUser(pseudo : string): Promise<User>{
+    async postUser(body : ProfilDto): Promise<User>{
+        const {pseudo} = body;
         try{
-            const user = await this.usersRepository.findOneOrFail({ where : {pseudo}})
+            const user = await this.usersRepository.findOneOrFail({ where : {pseudo : pseudo}})
             return user;
         }
         catch (error){

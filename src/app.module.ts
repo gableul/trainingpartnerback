@@ -20,7 +20,7 @@ import { DonneeGraph } from './donneeGraph/donneeGraph.entity';
     password : 'root',
     database : 'training_partner',
     entities : [User,Graphique,DonneeGraph],
-    synchronize : false,
+    synchronize : true,
   }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule],
   controllers: [AppController],
   providers: [AppService],
@@ -32,7 +32,6 @@ export class AppModule implements NestModule {
     // QUAND ON AURA UN SERVEUR /NDD, MODIFIER LA LIGNE CI DESSUS PAR :
     // consumer.apply(CorsMiddleware).withOrigins('http://monsite.com').forRoutes('*');
     //CHANGER monsite.com PAR NOTRE URL.
-
   }
 }
 

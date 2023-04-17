@@ -9,15 +9,15 @@ export class GraphiqueDto{
     @IsString()
     @IsNotEmpty()
     @Length(3,15)
-    readonly userPseudo : string
-
-    @IsString()
-    @IsNotEmpty()
-    @Length(3,15)
     readonly nomSport : string
 
     @IsString()
     @IsNotEmpty()
     @Length(3,15)
     readonly titre : string
+
+    @IsString()
+    @IsNotEmpty()
+    @Length(3,15)
+    readonly userPseudo : string
 }

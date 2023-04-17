@@ -2,6 +2,7 @@ import { Controller, Post, Body, UseInterceptors, ClassSerializerInterceptor, Se
 import { LoginDto } from './Dtos/loginDto';
 import { SignUpDto } from './Dtos/signUpDto';
 import { UserService } from './user.service';
+import { ProfilDto } from './Dtos/profilDto';
 
 @Controller('user')
 export class UserController {
@@ -40,15 +41,12 @@ export class UserController {
       this.userService.postLogout(session);
   }
 
-  @Get('/profil')
-  async getUser(@Session() session : Record<string,any>){
-    console.log("session : ",session)
-    console.log("session.user : ",session.user)
-    console.log("session.user.pseudo : ",session.user.pseudo)
+  @Post('/profil')
+  async postUser(@Body() body : ProfilDto){
+    console.log("body : ",body)
     try {
-      console.log(session);
-      if(session && session.connected && session.user && session.user.pseudo){
-        const user = await this.userService.getUser(session.user.pseudo);
+      if(body){
+        const user = await this.userService.postUser(body);
         console.log(user)
         return user;
       }
