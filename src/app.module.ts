@@ -9,6 +9,7 @@ import { GraphiqueModule } from './graphique/graphique.module';
 import { Graphique } from './graphique/graphique.entity';
 import { DonneeGraphModule } from './donneeGraph/donneeGraph.module';
 import { DonneeGraph } from './donneeGraph/donneeGraph.entity';
+import { SeanceModule } from './seance/seance.module';
 
 
 @Module({
@@ -21,7 +22,7 @@ import { DonneeGraph } from './donneeGraph/donneeGraph.entity';
     database : 'training_partner',
     entities : [User,Graphique,DonneeGraph],
     synchronize : true,
-  }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule],
+  }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule, SeanceModule],
   controllers: [AppController],
   providers: [AppService],
 })

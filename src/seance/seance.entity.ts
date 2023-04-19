@@ -3,21 +3,24 @@ import { User } from 'src/user/user.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
 
 @Entity()
-export class Graphique{
-    @Column()
-    readonly typeGraph : string;
+export class Seance{
+    @PrimaryGeneratedColumn()
+    readonly idSeance : number;
 
     @PrimaryGeneratedColumn()
-    readonly idGraph : number;
+    readonly userPseudo : string;
     
+    @Column()
+    readonly nom : string;
+
+    @Column()
+    readonly duree : string;
+
     @Column()
     readonly nomSport : string;
 
     @Column()
-    readonly titre : string;
-
-    @PrimaryGeneratedColumn()
-    readonly userPseudo : string;
+    readonly date: Date;
 
     /*@ManyToOne(()=> User, (user)=> user.graphique)
     user : string;
