@@ -9,6 +9,12 @@ import { GraphiqueModule } from './graphique/graphique.module';
 import { Graphique } from './graphique/graphique.entity';
 import { DonneeGraphModule } from './donneeGraph/donneeGraph.module';
 import { DonneeGraph } from './donneeGraph/donneeGraph.entity';
+import { BattleModule } from './battle/battle.module';
+import { SportModule } from './sport/sport.module';
+import { ExerciceCourseModule } from './exercice-course/exercice-course.module';
+import { ExerciceEscaladeModule } from './exercice-escalade/exercice-escalade.module';
+import { ExerciceMusculationController } from './exercice-musculation/exercice-musculation.controller';
+import { ExerciceMusculationModule } from './exercice-musculation/exercice-musculation.module';
 
 
 @Module({
@@ -20,9 +26,9 @@ import { DonneeGraph } from './donneeGraph/donneeGraph.entity';
     password : 'root',
     database : 'training_partner',
     entities : [User,Graphique,DonneeGraph],
-    synchronize : true,
-  }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule],
-  controllers: [AppController],
+    synchronize : false,
+  }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule, BattleModule, SportModule, ExerciceCourseModule, ExerciceEscaladeModule, ExerciceMusculationModule],
+  controllers: [AppController, ExerciceMusculationController],
   providers: [AppService],
 })
 export class AppModule implements NestModule {

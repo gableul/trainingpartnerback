@@ -7,11 +7,11 @@ export class DonneeGraph{
     readonly idDonnee : number;
     
     @Column()
-    readonly nomAttribut : string;
+    nomAttribut : string;
 
     @Column()
-    readonly valeur : number;
+    valeur : number;
 
-    /*@ManyToOne(()=> Graphique, (graphique)=> graphique.donneeGraph)
-    graphique : Graphique*/
+    @ManyToOne(()=> Graphique, (graphique)=> graphique.donneeGraph)
+    graphique : Graphique
 }

@@ -9,6 +9,7 @@ export class DonneeGraphController {
     @Post('/donnee')
     async postChartCreate(@Body() body : DonneeGraphDto){
         try{
+            console.log(body);
             return this.donneeGraphService.postDonneeGraph(body);
         }
         catch(error){

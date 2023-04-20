@@ -20,8 +20,8 @@ export class Graphique{
     readonly userPseudo : string;
 
     /*@ManyToOne(()=> User, (user)=> user.graphique)
-    user : string;
+    user : string;*/
 
     @OneToMany(()=>DonneeGraph, (donneeGraph) => donneeGraph.graphique)
-    donneeGraph : DonneeGraph[]*/
+    donneeGraph : DonneeGraph[]
 }
