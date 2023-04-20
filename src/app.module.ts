@@ -10,6 +10,7 @@ import { Graphique } from './graphique/graphique.entity';
 import { DonneeGraphModule } from './donneeGraph/donneeGraph.module';
 import { DonneeGraph } from './donneeGraph/donneeGraph.entity';
 import { SeanceModule } from './seance/seance.module';
+import { Seance} from './seance/seance.entity';
 
 
 @Module({
@@ -20,7 +21,7 @@ import { SeanceModule } from './seance/seance.module';
     username : 'root',
     password : 'root',
     database : 'training_partner',
-    entities : [User,Graphique,DonneeGraph],
+    entities : [User,Graphique,DonneeGraph,Seance],
     synchronize : true,
   }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule, SeanceModule],
   controllers: [AppController],

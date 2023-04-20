@@ -5,6 +5,9 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 export class DonneeGraph{
     @PrimaryGeneratedColumn()
     readonly idDonnee : number;
+
+    @Column()
+    readonly idGraph : number;
     
     @Column()
     readonly nomAttribut : string;
@@ -12,6 +15,6 @@ export class DonneeGraph{
     @Column()
     readonly valeur : number;
 
-    /*@ManyToOne(()=> Graphique, (graphique)=> graphique.donneeGraph)
-    graphique : Graphique*/
+    @ManyToOne(()=> Graphique, graphique => graphique.donneeGraph)
+    graphique : Graphique
 }

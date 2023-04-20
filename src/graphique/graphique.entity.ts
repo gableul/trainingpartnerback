@@ -16,12 +16,12 @@ export class Graphique{
     @Column()
     readonly titre : string;
 
-    @PrimaryGeneratedColumn()
+    @Column()
     readonly userPseudo : string;
 
     /*@ManyToOne(()=> User, (user)=> user.graphique)
-    user : string;
+    user : string;*/
 
-    @OneToMany(()=>DonneeGraph, (donneeGraph) => donneeGraph.graphique)
-    donneeGraph : DonneeGraph[]*/
+    @OneToMany(()=>DonneeGraph, donneeGraph => donneeGraph.graphique)
+    donneeGraph : DonneeGraph[]
 }
