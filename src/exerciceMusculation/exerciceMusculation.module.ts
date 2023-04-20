@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ExerciceMusculationService } from './exercice-musculation.service';
+import { ExerciceMusculationService } from './exerciceMusculation.service';
 
 @Module({
   providers: [ExerciceMusculationService]

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ExerciceEscaladeController } from './exercice-escalade.controller';
-import { ExerciceEscaladeService } from './exercice-escalade.service';
+import { ExerciceEscaladeController } from './exerciceEscalade.controller';
+import { ExerciceEscaladeService } from './exerciceEscalade.service';
 
 @Module({
   controllers: [ExerciceEscaladeController],

@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ExerciceMusculationController } from './exercice-musculation.controller';
+import { ExerciceMusculationController } from './exerciceMusculation.controller';
 
 describe('ExerciceMusculationController', () => {
   let controller: ExerciceMusculationController;

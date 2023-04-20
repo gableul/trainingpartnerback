@@ -12,10 +12,10 @@ import { DonneeGraph } from './donneeGraph/donneeGraph.entity';
 <<<<<<< HEAD
 import { BattleModule } from './battle/battle.module';
 import { SportModule } from './sport/sport.module';
-import { ExerciceCourseModule } from './exercice-course/exercice-course.module';
-import { ExerciceEscaladeModule } from './exercice-escalade/exercice-escalade.module';
-import { ExerciceMusculationController } from './exercice-musculation/exercice-musculation.controller';
-import { ExerciceMusculationModule } from './exercice-musculation/exercice-musculation.module';
+import { ExerciceCourseModule } from './exerciceCourse/exerciceCourse.module';
+import { ExerciceEscaladeModule } from './exerciceEscalade/exerciceEscalade.module';
+import { ExerciceMusculationController } from './exerciceMusculation/exerciceMusculation.controller';
+import { ExerciceMusculationModule } from './exerciceMusculation/exerciceMusculation.module';
 =======
 import { SeanceModule } from './seance/seance.module';
 import { Seance} from './seance/seance.entity';
