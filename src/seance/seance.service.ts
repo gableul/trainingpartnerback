@@ -7,10 +7,10 @@ import { Seance } from './seance.entity';
 export class SeanceService {
     constructor(
         @InjectRepository(Seance) 
-        private readonly senaceRepository : Repository<Seance>,
+        private readonly seanceRepository : Repository<Seance>,
     ){}
 
     async getSeance():Promise<Seance[]>{
-        return await this.senaceRepository.find();
+        return await this.seanceRepository.find();
     }
 }

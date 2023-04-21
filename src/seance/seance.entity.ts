@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, CreateDateColumn } from 'typeorm';
 
 @Entity()
 export class Seance{
@@ -17,6 +17,6 @@ export class Seance{
     @Column()
     readonly nomSport : string;
 
-    @Column()
+    @CreateDateColumn()
     readonly date: Date;
 }
