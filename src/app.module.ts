@@ -28,7 +28,7 @@ import { SeanceModule } from './seance/seance.module';
     password : 'root',
     database : 'training_partner',
     entities : [User,Graphique,DonneeGraph,Seance],
-    synchronize : true,
+    synchronize : false,
   }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule, SeanceModule],
   controllers: [AppController],
   providers: [AppService],

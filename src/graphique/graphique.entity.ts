@@ -22,6 +22,6 @@ export class Graphique{
     /*@ManyToOne(()=> User, (user)=> user.graphique)
     user : string;*/
 
-    @OneToMany(()=>DonneeGraph, (donneeGraph) => donneeGraph.graphique)
-    donneeGraph : DonneeGraph[]
+    /*@OneToMany(()=>DonneeGraph, (donneeGraph) => donneeGraph.graphique)
+    donneeGraph : DonneeGraph[]*/
 }

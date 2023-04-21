@@ -19,12 +19,16 @@ export class DonneeGraphService {
         const graphique = await this.graphiqueRepository.findOneOrFail({ where : {idGraph : body.idGraph}});
         try{
             for (const donnee of body.donnees){
-                console.log("donnee : ",donnee, donnee.nomAttribut)
+                console.log("donnee : ",donnee)
+                console.log("attribut : ", donnee.nomAttribut," valeur : ", donnee.valeur)
                 const donneeGraph = new DonneeGraph();
                 donneeGraph.nomAttribut = donnee.nomAttribut;
                 donneeGraph.valeur = donnee.valeur;
-                donneeGraph.graphique = graphique;
-                await this.donneeGraphRepository.save(donneeGraph)
+                donneeGraph.idGraph = graphique.idGraph;
+                const chart = this.graphiqueRepository.create(donneeGraph)
+                console.log("donneGraph : ", donneeGraph)
+                console.log(chart)
+                await this.donneeGraphRepository.save(chart)
             }
             return "Chart create !"
         }

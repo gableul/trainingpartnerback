@@ -15,6 +15,7 @@ export class GraphiqueService {
         console.log('Received request body',body)
         try{
             const chart = this.graphiqueRepository.create(body)
+            console.log("chart : ", chart)
             const graphique =  await this.graphiqueRepository.save(chart)
             return graphique.idGraph;
         }

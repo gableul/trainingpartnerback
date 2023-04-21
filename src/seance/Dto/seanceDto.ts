@@ -1,10 +1,6 @@
 import { IsString, IsNotEmpty, Length, IsNumber, IsDate } from  "class-validator"
 
 export class SeanceDto{
-    @IsNumber()
-    @IsNotEmpty()
-    readonly idSeance : number;
-
     @IsString()
     @IsNotEmpty()
     @Length(3,15)
@@ -23,9 +19,4 @@ export class SeanceDto{
     @IsString()
     @IsNotEmpty()
     readonly nomSport : string;
-
-    @IsDate()
-    @IsNotEmpty()
-    readonly date: Date;
-
 }
