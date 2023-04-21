@@ -4,7 +4,7 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 @Entity()
 export class DonneeGraph{
     @PrimaryGeneratedColumn()
-    readonly idDonnee : numbgit er;
+    readonly idDonnee : number;
 
     @Column()
     readonly idGraph : number;
