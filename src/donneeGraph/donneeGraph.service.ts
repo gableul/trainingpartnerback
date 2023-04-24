@@ -4,6 +4,7 @@ import { DonneeGraph } from './donneeGraph.entity';
 import { Graphique } from 'src/graphique/graphique.entity';
 import { Repository } from 'typeorm';
 import { DonneeGraphDto } from './Dto/donneeGraphDto';
+import { User } from 'src/user/user.entity';
 
 @Injectable()
 export class DonneeGraphService {
@@ -11,24 +12,24 @@ export class DonneeGraphService {
         @InjectRepository(DonneeGraph)
         private readonly donneeGraphRepository : Repository<DonneeGraph>,
         @InjectRepository(Graphique)
-        private readonly graphiqueRepository : Repository<Graphique>
+        private readonly graphiqueRepository : Repository<Graphique>,
+        @InjectRepository(User)
+        private readonly usersRepository : Repository<User>
     ) {}
 
     async postDonneeGraph(body : DonneeGraphDto) : Promise<string> {
         console.log('Received request body',body)
         const graphique = await this.graphiqueRepository.findOneOrFail({ where : {idGraph : body.idGraph}});
+        const user = await this.usersRepository.findOneOrFail({ where : {pseudo : body.userPseudo}})
         try{
             for (const donnee of body.donnees){
+                const nomAttribut = donnee.nomAttribut;
+                const valeur = donnee.valeur;
                 console.log("donnee : ",donnee)
-                console.log("attribut : ", donnee.nomAttribut," valeur : ", donnee.valeur)
-                const donneeGraph = new DonneeGraph();
-                donneeGraph.nomAttribut = donnee.nomAttribut;
-                donneeGraph.valeur = donnee.valeur;
-                donneeGraph.idGraph = graphique.idGraph;
-                const chart = this.graphiqueRepository.create(donneeGraph)
-                console.log("donneGraph : ", donneeGraph)
+                console.log("attribut : ", nomAttribut," valeur : ", valeur)
+                const chart = this.donneeGraphRepository.create({ nomAttribut, valeur, graphique, user})
                 console.log(chart)
-                await this.donneeGraphRepository.save(chart)
+                this.donneeGraphRepository.save(chart)
             }
             return "Chart create !"
         }

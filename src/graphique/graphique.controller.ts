@@ -8,8 +8,9 @@ export class GraphiqueController {
 
     @Post('/create')
     async postChartCreate(@Body() body : GraphiqueDto){
+        const pseudo = body.userPseudo;
         try{
-            return this.graphiqueService.postChartCreate(body);
+            return this.graphiqueService.postChartCreate(body,pseudo);
         }
         catch(error){
             console.log(error);

@@ -4,11 +4,11 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'ty
 
 @Entity()
 export class Graphique{
-    @Column()
-    readonly typeGraph : string;
-
     @PrimaryGeneratedColumn()
     readonly idGraph : number;
+
+    @Column()
+    readonly typeGraph : string;
     
     @Column()
     readonly nomSport : string;
@@ -16,12 +16,9 @@ export class Graphique{
     @Column()
     readonly titre : string;
 
-    @Column()
-    readonly userPseudo : string;
+    @ManyToOne(()=> User, (user)=> user.graphique)
+    user : User;
 
-    /*@ManyToOne(()=> User, (user)=> user.graphique)
-    user : string;*/
-
-    /*@OneToMany(()=>DonneeGraph, (donneeGraph) => donneeGraph.graphique)
-    donneeGraph : DonneeGraph[]*/
+    @OneToMany(()=>DonneeGraph, (donneeGraph) => donneeGraph.graphique)
+    donneeGraph : DonneeGraph[]
 }
