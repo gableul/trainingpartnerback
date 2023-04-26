@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Post } from '@nestjs/common';
 import { GraphiqueService } from './graphique.service';
 import { GraphiqueDto } from './Dto/graphiqueDto';
 
@@ -15,6 +15,17 @@ export class GraphiqueController {
         catch(error){
             console.log(error);
             throw new BadRequestException(`Failed to create chart.Reason ${error}`)
+        }
+    }  
+
+    @Get('/grap')
+    async getChartCreate(){
+        try{
+            return this.graphiqueService.getChart();
+        }
+        catch(error){
+            console.log(error);
+            throw new BadRequestException(`Failed to get chart.Reason ${error}`)
         }
     }  
 }

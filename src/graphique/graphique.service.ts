@@ -4,7 +4,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { GraphiqueDto } from './Dto/graphiqueDto';
 import { User } from 'src/user/user.entity';
-import { DonneeGraph } from 'src/donneeGraph/donneeGraph.entity';
 
 @Injectable()
 export class GraphiqueService {
@@ -13,8 +12,6 @@ export class GraphiqueService {
         private readonly usersRepository : Repository<User>,
         @InjectRepository(Graphique)
         private readonly graphiqueRepository : Repository<Graphique>,
-        @InjectRepository(DonneeGraph)
-        private readonly donneeGraphRepository : Repository<DonneeGraph>,
     ) {}
 
     async postChartCreate(body : GraphiqueDto, pseudo : string) : Promise<number> {
@@ -31,5 +28,9 @@ export class GraphiqueService {
             console.log(error)
             throw new ConflictException(error.message)
         }
+    }
+    async getChart(){
+        const chart = await this.graphiqueRepository.find()//{order : {created_at : *DESC*}})
+        return chart;
     }
 }

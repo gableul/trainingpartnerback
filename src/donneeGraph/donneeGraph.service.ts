@@ -27,14 +27,19 @@ export class DonneeGraphService {
                 const valeur = donnee.valeur;
                 console.log("donnee : ",donnee)
                 console.log("attribut : ", nomAttribut," valeur : ", valeur)
-                const chart = this.donneeGraphRepository.create({ nomAttribut, valeur, graphique, user})
+                const chart = await this.donneeGraphRepository.create({ nomAttribut, valeur, graphique, user})
                 console.log(chart)
-                this.donneeGraphRepository.save(chart)
+                await this.donneeGraphRepository.save(chart)
             }
             return "Chart create !"
         }
         catch(error){
             throw new ConflictException(error.message)
         }
+    }
+
+    async getDonneeGraph(){
+        const graph = await this.postDonneeGraph
+        return graph;
     }
 }

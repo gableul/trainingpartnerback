@@ -1,7 +1,7 @@
 import { Exclude } from 'class-transformer';
 import { DonneeGraph } from 'src/donneeGraph/donneeGraph.entity';
 import { Graphique } from 'src/graphique/graphique.entity';
-import { Entity, Column, PrimaryColumn, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class User{
