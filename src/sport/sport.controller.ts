@@ -4,7 +4,7 @@ import { SportService } from './sport.service';
 @Controller('sport')
 export class SportController {
     constructor(private readonly sportService : SportService) {}
-    @Get('/')
+    @Get('/listeSport')
     async getSport(){
         try{
             return this.sportService.getSport();

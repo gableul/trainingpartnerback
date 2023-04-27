@@ -18,10 +18,10 @@ export class GraphiqueController {
         }
     }  
 
-    @Get('/grap')
-    async getChartCreate(){
+    @Post('/graph')
+    async postChart(@Body() body : string){
         try{
-            return this.graphiqueService.getChart();
+            return this.graphiqueService.postChart(body);
         }
         catch(error){
             console.log(error);

@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, Length } from  "class-validator"
+import { IsString, IsNotEmpty, Length, IsDate } from  "class-validator"
 
 export class GraphiqueDto{
     @IsString()
@@ -20,4 +20,7 @@ export class GraphiqueDto{
     @IsNotEmpty()
     @Length(3,15)
     readonly userPseudo : string
+
+    @IsDate()
+    readonly date : Date
 }

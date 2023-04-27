@@ -29,8 +29,9 @@ export class GraphiqueService {
             throw new ConflictException(error.message)
         }
     }
-    async getChart(){
-        const chart = await this.graphiqueRepository.find()//{order : {created_at : *DESC*}})
+    async postChart(pseudo : string){
+        const user = await this.usersRepository.find({ where : {pseudo : pseudo}})//{order : {created_at : *DESC*}})
+        const chart = await this.graphiqueRepository.find({where : {user : user}})
         return chart;
     }
 }
