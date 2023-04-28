@@ -59,7 +59,7 @@ export class HebdomadaireService {
                 muscle=part;
             }
         };
-        return 'Le muscle le moins travailer est'+muscle+"avec "+min+"repetition dans la semaines"+this.date;
+        return 'Le muscle le moins travailler est'+muscle+"avec "+min+"repetition dans la semaines"+this.date;
     }
 }
 

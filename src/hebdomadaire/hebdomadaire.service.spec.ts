@@ -15,4 +15,11 @@ describe('HebdomadaireService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  describe  ('FindAll', () => {
+    it ('should return le muscle le moins travaillé ', async()=>{
+      const res = await service.getLessWorkedMuscle();
+      expect(typeof res).toBe('string');
+    })
+  })
 });
