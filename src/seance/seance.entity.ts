@@ -1,15 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, CreateDateColumn } from 'typeorm';
+import { User } from 'src/user/user.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
 
 @Entity()
 export class Seance{
     @PrimaryGeneratedColumn()
     readonly idSeance : number;
-
-    @Column()
-    readonly userPseudo : string;
     
     @Column()
-    readonly nom : string;
+    readonly nomSeance : string;
 
     @Column()
     readonly duree : string;
@@ -17,6 +15,9 @@ export class Seance{
     @Column()
     readonly nomSport : string;
 
-    @CreateDateColumn()
-    readonly date: Date;
+    @Column()
+    readonly date : Date;
+
+    @ManyToOne(()=> User, (user)=> user.seance)
+    user : User;
 }

@@ -14,8 +14,9 @@ export class SeanceController {
 
     @Post('/createSeance')
     async postChartCreate(@Body() body : SeanceDto){
+        const pseudo = body.userPseudo;
         try{
-            return this.seanceService.postSeanceCreate(body);
+            return this.seanceService.postSeanceCreate(body, pseudo);
         }
         catch(error){
             console.log(error);

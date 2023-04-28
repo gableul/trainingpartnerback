@@ -1,6 +1,7 @@
 import { Exclude } from 'class-transformer';
 import { DonneeGraph } from 'src/donneeGraph/donneeGraph.entity';
 import { Graphique } from 'src/graphique/graphique.entity';
+import { Seance } from 'src/seance/seance.entity';
 import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm';
 
 @Entity()
@@ -33,6 +34,6 @@ export class User{
     @OneToMany(()=>Graphique, (Graphique) =>Graphique.user)
     graphique : Graphique[]
 
-    @OneToMany(()=>DonneeGraph, (donneeGraph) =>donneeGraph.user)
-    donneeGraph : DonneeGraph[]
+    @OneToMany(()=>Seance, (seance) =>seance.user)
+    seance :Seance[]
 }
