@@ -17,6 +17,9 @@ import { ExerciceMusculationController } from './exerciceMusculation/exerciceMus
 import { ExerciceMusculationModule } from './exerciceMusculation/exerciceMusculation.module';
 import { Seance } from './seance/seance.entity';
 import { SeanceModule } from './seance/seance.module';
+import { ExerciceMuscu } from './exerciceMusculation/exerciceMuscu.entity';
+import { ExerciceEscalade } from './exerciceEscalade/exerciceEscalade.entity';
+import { ExerciceCourse } from './exerciceCourse/exerciceCourse.entity';
 
 
 @Module({
@@ -27,9 +30,9 @@ import { SeanceModule } from './seance/seance.module';
     username : 'root',
     password : 'root',
     database : 'training_partner',
-    entities : [User,Graphique,DonneeGraph,Seance],
+    entities : [User,Graphique,DonneeGraph,Seance, ExerciceMuscu, ExerciceEscalade, ExerciceCourse],
     synchronize : false,
-  }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule, SeanceModule],
+  }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule, SeanceModule, ExerciceMusculationModule, ExerciceEscaladeModule, ExerciceCourseModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -20,6 +20,4 @@ export class SeanceDto{
     @Length(3,15)
     readonly userPseudo : string;
 
-    @IsDate()
-    readonly date : Date;
 }

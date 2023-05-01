@@ -16,9 +16,6 @@ export class Graphique{
     @Column()
     readonly titre : string;
 
-    @Column()
-    readonly date : Date;
-
     @ManyToOne(()=> User, (user)=> user.graphique)
     user : User;
 
