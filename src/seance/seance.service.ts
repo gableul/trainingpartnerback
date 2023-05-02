@@ -14,8 +14,9 @@ export class SeanceService {
         private readonly usersRepository : Repository<User>,
     ){}
 
-    async getSeance():Promise<Seance[]>{
-        return await this.seanceRepository.find();
+    async getSeance(pseudo :string):Promise<Seance[]>{
+        const user = await this.usersRepository.find({ where : {pseudo : pseudo}})
+        return await this.seanceRepository.find({where : {user : user}});
     }
 
     async postSeanceCreate(body : SeanceDto, pseudo : string) : Promise<number> {

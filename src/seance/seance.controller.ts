@@ -7,11 +7,11 @@ import { Seance } from './seance.entity';
 export class SeanceController {
     constructor(private readonly seanceService : SeanceService){}
 
-    @Get()
-    getAllSeance():Promise<Seance[]>{
-        return this.seanceService.getSeance();
+    @Post('/seances')
+    getAllSeance(@Body() body : string):Promise<Seance[]>{
+        return this.seanceService.getSeance(body);
     }
-
+ 
     @Post('/createSeance')
     async postChartCreate(@Body() body : SeanceDto){
         const pseudo = body.userPseudo;
