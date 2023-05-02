@@ -28,7 +28,6 @@ export class ExerciceMusculationService {
                 const poids = donnee.poids;
                 const nom = donnee.nom;
                 const tmpsRepos = donnee.tmpsRepos;
-                console.log("donnee : ",donnee)
                 const exercice = await this.exerciceMuscuRepository.create({ nbrSerie, nbrRep, poids, nom, tmpsRepos, seance, user})
                 console.log(exercice)
                 await this.exerciceMuscuRepository.save(exercice)

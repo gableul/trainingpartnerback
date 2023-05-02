@@ -5,13 +5,13 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 @Entity()
 export class ExerciceCourse{
     @PrimaryGeneratedColumn()
-    readonly idExercice : number;
+    readonly idExerciceCourse : number;
 
     @Column()
     readonly distance : number
 
     @Column()
-    readonly chrono : number
+    readonly chrono : string
 
     @Column()
     readonly bpm : number

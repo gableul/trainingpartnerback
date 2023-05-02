@@ -10,7 +10,7 @@ import { ExerciceCourseDto } from './Dto/exerciceCourseDto';
 export class ExerciceCourseService {
     constructor (
         @InjectRepository(ExerciceCourse)
-        private readonly exerciceEscaladeRepository : Repository<ExerciceCourse>,
+        private readonly exerciceCourseRepository : Repository<ExerciceCourse>,
         @InjectRepository(Seance)
         private readonly seanceRepository : Repository<Seance>,
         @InjectRepository(User)
@@ -29,9 +29,9 @@ export class ExerciceCourseService {
                 const vitesse = donnee.vitesse;
                 const nom = donnee.nom;
                 console.log("donnee : ",donnee)
-                const exercice = await this.exerciceEscaladeRepository.create({ distance, chrono, bpm, vitesse, nom, seance, user})
+                const exercice = await this.exerciceCourseRepository.create({ distance, chrono, bpm, vitesse, nom, seance, user})
                 console.log(exercice)
-                await this.exerciceEscaladeRepository.save(exercice)
+                await this.exerciceCourseRepository.save(exercice)
             }
             return "Seance create !"
         }

@@ -10,5 +10,5 @@ export class ExerciceCourseDto{
     readonly userPseudo : string
 
     @IsNotEmpty()
-    readonly donnees : { distance : number, chrono : number, bpm : number, vitesse : number, nom : string }[]
+    readonly donnees : { distance : number, chrono : string, bpm : number, vitesse : number, nom : string }[]
 }

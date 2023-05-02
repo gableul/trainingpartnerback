@@ -5,7 +5,7 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 @Entity()
 export class ExerciceEscalade{
     @PrimaryGeneratedColumn()
-    readonly idExercice : number;
+    readonly idExerciceEscalade : number;
 
     @Column()
     readonly difficulte : string
@@ -19,7 +19,6 @@ export class ExerciceEscalade{
     @Column()
     readonly type : string
 
-    
     @ManyToOne(()=> Seance, (seance)=> seance.exerciceEscalade)
     seance : Seance;
 
