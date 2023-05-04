@@ -18,6 +18,9 @@ export class Seance{
     @Column()
     readonly nomSport : string;
 
+    @Column()
+    readonly date : string;
+
     @ManyToOne(()=> User, (user)=> user.seance)
     user : User;
 
