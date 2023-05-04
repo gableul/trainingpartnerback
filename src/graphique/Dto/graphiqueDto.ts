@@ -21,4 +21,8 @@ export class GraphiqueDto{
     @Length(3,15)
     readonly userPseudo : string
 
+    @IsString()
+    @IsNotEmpty()
+    @Length(8,10)
+    readonly date : string
 }
