@@ -17,18 +17,6 @@ export class SeanceService {
     async getSeance(pseudo :string):Promise<Seance[]>{
         const user = await this.usersRepository.findOne({ where : {pseudo : pseudo}})
         const seance = await this.seanceRepository.find({where : {user : user}});
-        for (const donnee in seance){
-            console.log(donnee)
-        }
-        return seance;
-    }
-
-    async getBattle(pseudo :string){
-        const user = await this.usersRepository.find({ where : {pseudo : pseudo}})
-        const seance = await this.seanceRepository.find({where : {user : user}});
-        for (const donnee in seance){
-            console.log(donnee)
-        }
         return seance;
     }
 
