@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Brackets, Repository, createQueryBuilder } from 'typeorm';
 import { Seance } from './seance.entity';
 import { SeanceDto } from './Dto/seanceDto';
 import { User } from 'src/user/user.entity';
@@ -15,8 +15,21 @@ export class SeanceService {
     ){}
 
     async getSeance(pseudo :string):Promise<Seance[]>{
+        const user = await this.usersRepository.findOne({ where : {pseudo : pseudo}})
+        const seance = await this.seanceRepository.find({where : {user : user}});
+        for (const donnee in seance){
+            console.log(donnee)
+        }
+        return seance;
+    }
+
+    async getBattle(pseudo :string){
         const user = await this.usersRepository.find({ where : {pseudo : pseudo}})
-        return await this.seanceRepository.find({where : {user : user}});
+        const seance = await this.seanceRepository.find({where : {user : user}});
+        for (const donnee in seance){
+            console.log(donnee)
+        }
+        return seance;
     }
 
     async postSeanceCreate(body : SeanceDto, pseudo : string) : Promise<number> {

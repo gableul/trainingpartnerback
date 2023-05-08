@@ -47,14 +47,21 @@ export class UserService {
         }
     }
 
-    async postUser(body : ProfilDto): Promise<User>{
-        const {pseudo} = body;
+    async setUser(body : ProfilDto): Promise<User>{
+        const {pseudo, newPseudo} = body;
         try{
             const user = await this.usersRepository.findOneOrFail({ where : {pseudo : pseudo}})
+            user.pseudo = newPseudo;
+            await this.usersRepository.save(user)
+            this.deleteUser(pseudo);
             return user;
         }
         catch (error){
             throw new NotFoundException(`User with pseudo ${ pseudo } not found`);
         }
     }  
+
+    async deleteUser (pseudo : string) : Promise<void>{
+        await this.usersRepository.delete({pseudo : pseudo});
+    }
 }

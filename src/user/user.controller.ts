@@ -41,12 +41,12 @@ export class UserController {
       this.userService.postLogout(session);
   }
 
-  @Post('/profil')
-  async postUser(@Body() body : ProfilDto){
+  @Post('/setProfil')
+  async setProfil(@Body() body : ProfilDto){
     console.log("body : ",body)
     try {
       if(body){
-        const user = await this.userService.postUser(body);
+        const user = await this.userService.setUser(body);
         console.log(user)
         return user;
       }
@@ -58,4 +58,6 @@ export class UserController {
       throw new BadRequestException(`Failed to get user profile. Reason ${error.message}`)
     }
   }
+
+
 }
