@@ -35,6 +35,7 @@ import { ExerciceCourse } from './exerciceCourse/exerciceCourse.entity';
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule implements NestModule {
   // Configuration du CORS
   configure(consumer: MiddlewareConsumer) {
