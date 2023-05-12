@@ -41,12 +41,12 @@ export class UserController {
       this.userService.postLogout(session);
   }
 
-  @Post('/setProfil')
-  async setProfil(@Body() body : ProfilDto){
+  @Post('/profil')
+  async profil(@Body() body : ProfilDto){
     console.log("body : ",body)
     try {
       if(body){
-        const user = await this.userService.setUser(body);
+        const user = await this.userService.postUser(body);
         console.log(user)
         return user;
       }
@@ -58,6 +58,19 @@ export class UserController {
       throw new BadRequestException(`Failed to get user profile. Reason ${error.message}`)
     }
   }
+  // @Post('/setProfil')
+  // async setProfil(@Body() body : ProfilDto){
+  //   console.log("body : ",body)
+  //   try {
+  //     if(body){
+  //       const user = await this.userService.setUser(body);
+  //       console.log(user)
+  //       return user;
+  //     }
+  //   }catch(error){
+  //     throw new BadRequestException(`Failed to get user profile. Reason ${error.message}`)
+  //   }
+  // }
 
 
 }
