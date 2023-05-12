@@ -7,7 +7,7 @@ import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm';
 @Entity()
 export class User{
     @PrimaryColumn({unique : true})
-    pseudo : string;
+    readonly pseudo : string;
     
     @Column()
     readonly nom : string;

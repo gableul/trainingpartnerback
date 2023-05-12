@@ -47,19 +47,40 @@ export class UserService {
         }
     }
 
-    async setUser(body : ProfilDto): Promise<User>{
-        const {pseudo, newPseudo} = body;
+    async postUser(body: ProfilDto) {
+        const {pseudo} = body;
+        
+        try{
+            const user = await this.usersRepository.findOneOrFail({where : {pseudo : pseudo }});
+            return user;
+        }catch(error){
+            throw new NotFoundException('User with pseudo ${pseudo } not found');
+        }
+    }
+
+    // async setUser(body : ProfilDto): Promise<User>{
+    //     const {pseudo, newPseudo} = body;
+    //     try{
+    //         const user = await this.usersRepository.findOneOrFail({ where : {pseudo : pseudo}})
+    //         user.pseudo = newPseudo;
+    //         await this.usersRepository.save(user)
+    //         this.deleteUser(pseudo);
+    //         return user;
+    //     }
+    //     catch (error){
+    //         throw new NotFoundException(`User with pseudo ${ pseudo } not found`);
+    //     }
+    // }  
+    async User(pseudo : string): Promise<User>{
         try{
             const user = await this.usersRepository.findOneOrFail({ where : {pseudo : pseudo}})
-            user.pseudo = newPseudo;
-            await this.usersRepository.save(user)
-            this.deleteUser(pseudo);
             return user;
         }
         catch (error){
             throw new NotFoundException(`User with pseudo ${ pseudo } not found`);
         }
-    }  
+    }
+
 
     async deleteUser (pseudo : string) : Promise<void>{
         await this.usersRepository.delete({pseudo : pseudo});
