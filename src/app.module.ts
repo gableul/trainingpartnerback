@@ -24,11 +24,11 @@ import { ExerciceCourse } from './exerciceCourse/exerciceCourse.entity';
 @Module({
   imports: [TypeOrmModule.forRoot({
     type : 'mysql',
-    host : 'n2o93bb1bwmn0zle.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
+    host : 'eu-cdbr-west-03.cleardb.net',
     port : 3306,
-    username : 'lnnckqj979mebuu9',
-    password : 'lwn3dw7k7qkm05t4',
-    database : 'cm6xyn5rup1e5o4y',
+    username : 'b96d41a768a3fe',
+    password : '3ff0224b',
+    database : 'heroku_eda1da19ce582fa',
     entities : [User,Graphique,DonneeGraph,Seance, ExerciceMuscu, ExerciceEscalade, ExerciceCourse],
     synchronize : false,
   }),AppModule,UserModule, GraphiqueModule, DonneeGraphModule, SeanceModule, ExerciceMusculationModule, ExerciceEscaladeModule, ExerciceCourseModule],
